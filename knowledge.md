@@ -230,7 +230,69 @@ Programming by defining objects that send messages to each other. Objects have t
    > - Encapsulating Object  using C# Constructs
    >
    >   - User Defined Datatype
-   >     - "Class"
-   >     - "Struct"
-   >
-   > 
+   >     - "**Class**"
+   >     - "**Struct**"
+
+
+
+### Object and Memory
+
+---
+
+- Object State occupy memory
+- Data Structures
+  - Stack 
+    - short lived  (Method Execution)
+    - Auto Clean up
+    - Thread Safe
+  - Heap 
+    - Lifetime Dynamic (program Algorithm)
+    - Explicit Memory Management
+    - Not Thread safe 
+      - explicit Thread Synchronization Mechanism
+  - Static area
+    - Application Lifetime
+
+#### Class v/s Struct
+
+
+
+| Class                 | struct                                                       |
+| --------------------- | ------------------------------------------------------------ |
+| Object -> Heap        | Object -> stack,heap,static                                  |
+| MSIL -> ReferenceType | MSIL - > Value Type                                          |
+|                       | C# Built-in Types are struct  (int,float,char, double....) <br /> int x; //   Int x=new Int(); |
+
+
+
+### Class -  user defined type
+
+----
+
+> "class" C# keywod generates "ReferenceType" in MSIL
+
+```C#
+//Encapsulation 
+<AccessModifier> class <RoleName>{
+
+    //Responsibilities
+    /*
+    Fields
+    Properties
+    Initializers
+    Indexers
+    events
+    Nested Types
+    */
+
+}
+
+Ex:-
+    //RoleName :- Noun
+class Student{
+    
+    
+}    
+    
+```
+
