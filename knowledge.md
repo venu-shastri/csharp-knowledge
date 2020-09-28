@@ -177,14 +177,60 @@ Programming by defining objects that send messages to each other. Objects have t
 - Object -> "Certain Role"
 
   - "Responsibilities"
-    - "State" and "Behavior"
+    - "State/DataMember/Properties" and "Behavior/methods"
 
   
 
-  
+  > Current Software Project - Management  - List out Objects - Roles and Responsibilities
+>
+  > 1. Developer - Coding , Review , Document , Requirement Analysis,Unit Testing , Bug Fixing
+> 2. Product Owner :- Requirement Engineering ,
+  > 3. Devops Engineer : 
 
-  
 
-  
 
-  
+### Object Oriented Design
+
+----
+
+1. Identify Valid Objects - "Define Role and Assign Responsibilities" - "**Encapsulation**"  - "Classification/Description of Object state and Behavior"
+
+   > How to define/express encapsulation  in Programming Language : "User Defined Data Types"
+   >
+   > What is DataType ?
+   >
+   > Define "Domain Of Value"  : "State and Behavior"
+   >
+   > S/w Program = Algorithm + Data , Data Represents Value 
+   >
+   > DataType Classification  : 
+   >
+   > - Built-in/Primitive/Basic DataTypes (Domain of Value  is Predefined by Language Author or Domain of Value well understood by Compiler ) . Borrowed from Mathematics (number,char ,alphanumeric, whole number, real number)
+   >
+   >   - Ex:- 
+   >
+   >     ```c#
+   >     int x; // x resresents value from Number , Size and Range , convert,parse
+   >     char c; // c represents value from Charcters 
+   >     student std;//Domain Unkonwn
+   >     ```
+   >
+   >     
+   >
+   > - User Defined Datatype :  Programmer Defined Datatype 
+   >
+   >   - ex:- Add 10 and 20 
+   >   - Add Customer
+   >     - Banking Domain
+   >     - Retail Domain
+   >   - ex: Add new student to C# Training course
+   >     - data : student  {id,name,photo,}
+   >     - Describe Domain Of Student based on Philips Learning and Development Team inputs 
+   >
+   > - Encapsulating Object  using C# Constructs
+   >
+   >   - User Defined Datatype
+   >     - "Class"
+   >     - "Struct"
+   >
+   > 
