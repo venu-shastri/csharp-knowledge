@@ -1,0 +1,10 @@
+D:\knowledge\csharp-knowledge\Samples\Tally\bin\Debug\Tally.exe.config
+D:\knowledge\csharp-knowledge\Samples\Tally\bin\Debug\Tally.exe
+D:\knowledge\csharp-knowledge\Samples\Tally\bin\Debug\Tally.pdb
+D:\knowledge\csharp-knowledge\Samples\Tally\bin\Debug\RiskCalculatorLib.dll
+D:\knowledge\csharp-knowledge\Samples\Tally\bin\Debug\RiskCalculatorLib.pdb
+D:\knowledge\csharp-knowledge\Samples\Tally\obj\Debug\Tally.csproj.CoreCompileInputs.cache
+D:\knowledge\csharp-knowledge\Samples\Tally\obj\Debug\Tally.csproj.CopyComplete
+D:\knowledge\csharp-knowledge\Samples\Tally\obj\Debug\Tally.exe
+D:\knowledge\csharp-knowledge\Samples\Tally\obj\Debug\Tally.pdb
+D:\knowledge\csharp-knowledge\Samples\Tally\obj\Debug\Tally.csprojAssemblyReference.cache

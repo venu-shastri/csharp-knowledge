@@ -1,0 +1,10 @@
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\bin\Debug\RiskCalculatorLib.dll
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\bin\Debug\RiskCalculatorLib.pdb
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\obj\Debug\RiskCalculatorLib.csproj.CoreCompileInputs.cache
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\obj\Debug\RiskCalculatorLib.dll
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\obj\Debug\RiskCalculatorLib.pdb
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\bin\Debug\1.0.0.0\RiskCalculatorLib.dll
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\bin\Debug\1.0.0.0\RiskCalculatorLib.pdb
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\bin\Debug\2.0.0.0\RiskCalculatorLib.dll
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\bin\Debug\2.0.0.0\RiskCalculatorLib.pdb
+D:\knowledge\csharp-knowledge\Samples\RiskCalculatorLib\obj\Debug\RiskCalculatorLib.csprojAssemblyReference.cache

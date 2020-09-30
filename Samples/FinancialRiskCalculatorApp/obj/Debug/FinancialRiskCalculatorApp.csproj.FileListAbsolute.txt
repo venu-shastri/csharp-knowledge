@@ -1,0 +1,10 @@
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\bin\Debug\FinancialRiskCalculatorApp.exe.config
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\bin\Debug\FinancialRiskCalculatorApp.exe
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\bin\Debug\FinancialRiskCalculatorApp.pdb
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\obj\Debug\FinancialRiskCalculatorApp.csproj.CoreCompileInputs.cache
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\obj\Debug\FinancialRiskCalculatorApp.exe
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\obj\Debug\FinancialRiskCalculatorApp.pdb
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\bin\Debug\RiskCalculatorLib.dll
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\bin\Debug\RiskCalculatorLib.pdb
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\obj\Debug\FinancialRiskCalculatorApp.csprojAssemblyReference.cache
+D:\knowledge\csharp-knowledge\Samples\FinancialRiskCalculatorApp\obj\Debug\FinancialRiskCalculatorApp.csproj.CopyComplete
