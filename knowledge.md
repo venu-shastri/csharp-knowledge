@@ -1,11 +1,4 @@
-### C# Facts
-
----
-
-- Case Sensitive
-- Object Oriented Paradigm
-- One of the Popular Language - > Dotnet Fx based Solution
-- C # can be used as Script
+- t
 - C# - Dotnet Core -> Platform independent
 - C# Compilers
   - **Dotnet Fx - Compiler**
@@ -563,5 +556,245 @@ Assembly
 	Revision Number: 0x00000000
 	Locale: <null>
 
+```
+
+### Object Oriented Programming Using  C#
+
+----
+
+### Access Modifiers / Visibility Setters
+
+- private - (local to type (class,struct))
+- protected - (type and family)
+- internal - (local to assembly )
+- protected internal (protected or internal)
+- public (Unrestricted)
+
+### Keywords
+
+----
+
+> class , struct , interface , enum, static , cost , readonly , ref , out , params , is , as , delegate , event , var , private, public , internal, protected , public , virtual, abstract , override , sealed 
+
+
+
+##### static
+
+-----
+
+- data Member
+- functions 
+
+```c#
+//ReferenceType
+public class A{
+    public static int x; //static data Member
+    public int y;//Non static Data Member
+    public B obj_b=new B(); // heap allocation
+    public static void Fun(){ /* Member Function */
+       B newobj_b=new B();//Stack Allocation
+        
+    }
+}
+//ValueType - stack
+public struct B{
+    public static int xx; //static data Member
+    public int yy;//Non static Data Member
+   public static void Foo(){ /* Member Function */
+    
+    
+}
+
+public class MainClass{
+    //Thread - Execution Path , Function Centric
+    public static void Main(){
+        
+        A obj=new A();//TypeLoad
+        obj.y=30;
+        A obj2=new A();
+        obj.y=50;
+        A obj3=new A();
+        obj.y=100;
+        
+        A.x=10;
+        A.x-20;
+        A.x=30;
+        
+        B bObj=new B();//stack allocation
+        bObj.xx=100;
+
+        
+    }
+}
+    /* In the above example obj,obj2,obj3 will be allocated on Heap because "type A is a reference type" . "bObj" will be allocated on current thread stack because "B is a value type"
+    
+    
+    class BankAccount{
+    static string IFSCCode 
+    string accountNumber;
+    string accountType;
+    double balance;
+    double minBalance;
+    
+    }
+    // N number of BankAccount Objects
+    BankAccount instance1=new BankAccount();
+        BankAccount instance2=new BankAccount();
+            BankAccount instance3=new BankAccount();
+                BankAccount instance4=new BankAccount();  
+                BankAccount instance5=new BankAccount();
+    
+  public class A{
+  int x=10;
+  //compiler - public void Fun(readonly A this){}
+  public void Fun(){
+  
+  //require access -> member x
+
+  
+  }
+  //public void Foo(int x, string y, readonly A this)
+  public void Foo(int x,string y){}
+  
+  }
+  
+  public static  void DoWork(){
+  
+  }
+  class B{
+  
+  static void Main(){
+  
+  A obj=new A();
+  obj.Fun();
+  
+  }
+  
+  
+```
+
+|                        | Static Data Member             | Non Static Data member                      |
+| ---------------------- | ------------------------------ | ------------------------------------------- |
+| Life Time              | Process                        | Object Lifetime                             |
+| Memory Allocation Time | **Class/Type Load              | Instantiate                                 |
+| Allocation frequency   | Once                           | per object                                  |
+| Reference              | TypeName.StaticDataMemeberName | objectReference.MemberName                  |
+| Memory Location        | Static Area (Pinned table)     | ReferenceType = Heap<br />ValueType = Stack |
+
+> **Class/Type Load  :-  First ever interaction between thread and datatype
+
+
+
+##### static functions/behaviors
+
+
+
+|                       | Static Function          | Non Static Function                |
+| --------------------- | ------------------------ | ---------------------------------- |
+| has "this" argument   | N.A                      | yes                                |
+| Data Members - Access | Static Data Members Only | Static and Non Static Data members |
+| Invocation            | ClassName.MethodName()   | ObjectReference.MethodName()       |
+|                       |                          |                                    |
+
+
+
+#### Initializers / Constructors
+
+---
+
+- Special function 
+
+  - function name same as class/struct name
+
+  
+
+- Initialize Data members of the class , when the object created and before it is in use 
+
+- Use Constructor to initialize data members of   Immutable Object
+
+- Data Members
+
+  - static data members
+    - static initializer / Constructor
+  - Non Static Data members 
+    - Non Static initializer / Constructor
+
+- Classification Of Initializers
+
+|                     | Static Initializer              | Non Static Initializer |
+| ------------------- | ------------------------------- | ---------------------- |
+| has "this"          | N.A                             | yes                    |
+| Explicit Call       | implicit Call                   | Explicit Call          |
+| Execution Time      | Type/Class Load                 | Instantiation          |
+| Visibility          | Private (default)               | Set by Programmer      |
+| Overloading         | Not Supported ...zero arguments | Overloaded             |
+| Member Access       | Static Members                  | Static/Non Static      |
+| Execution Frequency | Only Once                       | Per Instantiation      |
+
+```C#
+public class Patient{
+
+    string mrn,name,email;
+    string contactNumber;
+    public static void SayHello(){
+        
+        System.Console.WriteLine('Hi from Static SayHello');
+    }
+	//default Constructor , explicit Call 
+	private Patient(){
+		System.Console.WriteLine("Default Constructor");
+        this.mrn=Patient.GetAutoGenreratedMrn();
+	} 
+    //overload Constructor
+    public Patient(string name):this(){
+        this.name=name;
+
+    }
+    public Patient(string name,string email):this(name){
+        this.email=email;
+    }
+    public Patient(string name,string contactNumber):this(name)
+    {
+        this.contactNumber=contactNumber;
+        
+    }
+    public Patient(string name,string contactNumber,string email):this(name){
+        this.contactNumber=contactNumber;
+        this.email=email;
+    }
+	 // static initializer , implicit Call
+	static Patient(){
+	System.Console.WriteLine("Static  Constructor");
+	}
+    static string GetAutoGenreratedMrn(){
+        System.Random _random=new System.Random();
+       int number= _random.Next();
+        string _newMrnValue="MRN"+number;
+        return _newMrnValue;
+    }
+}
+public class A
+{
+	public static void Main()
+	{
+
+        Patient.SayHello();
+		Patient obj=new Patient("tom");//Overloaded Constructor Call
+		Patient newObj=new Patient("hary");//Overloaded Constructor Call
+	}
+}
+
+
+
+```
+
+> Explore Singleton instance pattern
+
+```
+public class ICU{
+
+}
+
+ 
 ```
 
