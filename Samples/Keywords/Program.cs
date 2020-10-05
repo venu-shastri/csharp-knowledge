@@ -45,7 +45,11 @@ namespace Keywords
 			//Sum(1, 2, 3);
 			//Sum(1, 2, 3, 4, 5);
 			Selinium _sel = new Selinium();
-			_sel.Launch(new Browser("Chrome"), new Browser("IE"), new Browser("FireF"));
+			Browser _chrome = new Browser("Chrome");
+			Browser _ie = new Browser("IE");
+			Browser _fx = new Browser("Fire");
+
+			_sel.Launch(_chrome,_ie,_fx);
 		}
 
 		static int Sum(params int[] numbers)
