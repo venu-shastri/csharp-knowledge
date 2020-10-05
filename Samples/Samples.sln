@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiskCalculatorLib", "RiskCa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tally", "Tally\Tally.csproj", "{F2494983-971D-45E6-A3F6-2D29FA3EFD56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keywords", "Keywords\Keywords.csproj", "{49AF470E-5B01-4482-A8DA-15D9917EE018}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F2494983-971D-45E6-A3F6-2D29FA3EFD56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2494983-971D-45E6-A3F6-2D29FA3EFD56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2494983-971D-45E6-A3F6-2D29FA3EFD56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49AF470E-5B01-4482-A8DA-15D9917EE018}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49AF470E-5B01-4482-A8DA-15D9917EE018}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49AF470E-5B01-4482-A8DA-15D9917EE018}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49AF470E-5B01-4482-A8DA-15D9917EE018}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -980,3 +980,114 @@ public class Converter{
 
 ```
 
+
+
+### Array
+
+---
+
+> Data structure  - list of simile data  items  (each item/data belongs to same type)
+>
+> In Dotnet :- instance of reference type - "System.Array"
+>
+> Syntax :  
+
+
+
+```C#
+//Single Diemension Array
+<DataTypeOfEachItem>[] referenceName=new <DataTypeOfEachItem>[size];
+
+int[] numbersRef=new int[100];//Declaration
+int[] numbersRef=new int[] {1,2,3,4,5,7};// Declarartion and Initialization
+int[] numbersRef={1,2,3,4,5}//Array Literal Syntax
+
+//How to address elements in array
+//use - index  and "indexer"
+//Array index value start from 0
+
+//First Element 
+numbersRef[0]=10;
+int value=numbersRef[0];
+```
+
+### Checkpoint
+
+```C#
+public class Patient{}
+
+void Main(){
+
+Patient[] patientListRef=new Patient[10];
+Patient obj=new Patient();
+patientListRef[0]=obj;
+    
+}
+
+//Thread - Execution Trace 
+//Main Method Call
+OS Thread Id: 0x4708 (18184)
+ESP EIP
+002dedb4 005e00a9 Test.Program.Main(System.String[])
+PARAMETERS:
+args = 0x02722ef0
+LOCALS:
+0x002dedc0 = 0x00000000
+0x002dedbc = 0x00000000
+
+002df020 59551b8c [GCFrame: 002df020]
+
+============================================
+OS Thread Id: 0x4708 (18184)
+ESP EIP
+002dedb4 005e00dd Test.Program.Main(System.String[])
+PARAMETERS:
+args = 0x02722ef0
+LOCALS:
+0x002dedc0 = 0x02722f00 //Patient[] patientListRef=new Patient[10];
+0x002dedbc = 0x02722f24 // Patient obj=new Patient();
+
+002df020 59551b8c [GCFrame: 002df020]
+
+===============================
+
+!dumparray 0x02722f00
+Name: Test.Patient[]
+MethodTable: 58b96290
+EEClass: 5897daf4
+Size: 36(0x24) bytes
+Array: Rank 1, Number of elements 5, Type CLASS
+Element Methodtable: 003130a0
+[0] null
+[1] null
+[2] null
+[3] null
+[4] null
+
+=======================================
+
+!do 0x02722f24
+Name: Test.Patient
+MethodTable: 003130a0
+EEClass: 00311334
+Size: 12(0xc) bytes
+(C:\Users\ing07471\Documents\Visual Studio 2010\Projects\Test\Test\bin\Debug\Test.exe)
+Fields:
+None
+
+=======================================
+
+!dumparray 0x02722f00
+Name: Test.Patient[]
+MethodTable: 58b96290
+EEClass: 5897daf4
+Size: 36(0x24) bytes
+Array: Rank 1, Number of elements 5, Type CLASS
+Element Methodtable: 003130a0
+[0] 02722f24 // patientListRef[0]=obj;
+[1] null
+[2] null
+[3] null
+[4] null
+```
+

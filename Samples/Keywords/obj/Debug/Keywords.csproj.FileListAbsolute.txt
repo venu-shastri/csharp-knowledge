@@ -1,0 +1,6 @@
+D:\knowledge\csharp-knowledge\Samples\Keywords\bin\Debug\Keywords.exe.config
+D:\knowledge\csharp-knowledge\Samples\Keywords\bin\Debug\Keywords.exe
+D:\knowledge\csharp-knowledge\Samples\Keywords\bin\Debug\Keywords.pdb
+D:\knowledge\csharp-knowledge\Samples\Keywords\obj\Debug\Keywords.csproj.CoreCompileInputs.cache
+D:\knowledge\csharp-knowledge\Samples\Keywords\obj\Debug\Keywords.exe
+D:\knowledge\csharp-knowledge\Samples\Keywords\obj\Debug\Keywords.pdb
