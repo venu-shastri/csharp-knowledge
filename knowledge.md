@@ -999,6 +999,23 @@ public class Converter{
 <DataTypeOfEachItem>[] referenceName=new <DataTypeOfEachItem>[size];
 
 int[] numbersRef=new int[100];//Declaration
+
+numberfRef[0]=10;
+numbersRef[1]=20;
+numbersRef[2]=30;
+.
+.
+.
+.
+numbesRef[99]=999;
+
+//print
+for(int i=0;i<numbersRef.Length;i++){
+    
+    System.Console.WriteLine(numbersRef[i]);
+}
+
+
 int[] numbersRef=new int[] {1,2,3,4,5,7};// Declarartion and Initialization
 int[] numbersRef={1,2,3,4,5}//Array Literal Syntax
 
@@ -1009,6 +1026,10 @@ int[] numbersRef={1,2,3,4,5}//Array Literal Syntax
 //First Element 
 numbersRef[0]=10;
 int value=numbersRef[0];
+
+string[] names=new string[10];
+double[] currencyList=new double[10];
+
 ```
 
 ### Checkpoint
@@ -1089,5 +1110,106 @@ Element Methodtable: 003130a0
 [2] null
 [3] null
 [4] null
+```
+
+#### Multi Dimensional Array
+
+
+
+```
+Syntax: Matrix 2*2
+
+<DataTypeOfEachElement>[,] matrixRef=new <DataTypeOfEachElement>[rowSize,columnSize];
+
+ex:
+
+int[,] matrix=new int[2,2];
+matrix[0,0]=10;
+
+int[,] matrix=new int[,] { {1,2}, {2,3}  }
+
+//Matrix reference
+int[0,0]=10; // first Cell {row=0,column=0}
+int[1,0]=20;// second row , first column
+int value=int[1,1]; // second row,second column
+
+
+```
+
+#### Jagged Array
+
+---
+
+> Array with-in Array
+>
+> How to define multidimensional array  ? Each row can have variable column size.
+>
+> In jagged Array ...number of rows will be fixed at the declaration time. we can vary the number of columns for each row.
+
+```
+<dataTypeOfEachElement>[][] referenceName=new <dataTypeOfEachElement>[rowSize][];
+
+int[][] jaggedArray=new int[3][];
+
+jaggedArray[0]=new int[]{1,2};
+jaggedArray[1]=new int[]{1,2,3};
+jaggedArray[2]=new int[]{11,22,33,44};
+
+int value=jaggedArray[0][1];//2 
+value=jaggedArray[2][2];//33
+
+//iterate Jagged Array
+
+for(int i=0;i<jaggedArray.Length;i++){
+	//Columns 
+	for(int j=0;j<jaggedArray[i].Length;j++){
+	
+		System.Console.WriteLine(jaggedArray[i][j]);
+	
+	}
+
+}
+
+
+
+```
+
+#### params
+
+----
+
+> 1. Params parameter must be single dimensional array
+> 2. Params parameter must be the last argument in the formal parameter list
+
+```C#
+pubic int Sum(params int[] numbers){
+	int result=default(int);
+	for(int i=0;<numbers.Length;i++){
+		result+=numbers[i];
+	}
+}
+
+void Main(){
+    
+    int[] items={1,2,3};
+    Sum(items);
+    items={2,3,4,55,8};
+    Sum(items);
+    //Grammer
+    Sum(1,2);//Compiler -  int[] temp={1,2};
+    Sum(1,2,3);// int[] temp={1,2,3}
+    Sum(1,2,3,4,5);//int[] temp={1,2,3,4,5} 
+    
+}
+
+class Socket{
+    
+}
+
+void Listen(params Socket[] endpoints){
+    
+}
+
+Listen(new Soket(),new Socket(),new Socket());
 ```
 
