@@ -1,4 +1,5 @@
-- t
+
+
 - C# - Dotnet Core -> Platform independent
 - C# Compilers
   - **Dotnet Fx - Compiler**
@@ -250,11 +251,12 @@ Programming by defining objects that send messages to each other. Objects have t
 
 
 
-| Class                 | struct                                                       |
-| --------------------- | ------------------------------------------------------------ |
-| Object -> Heap        | Object -> stack,heap,static                                  |
-| MSIL -> ReferenceType | MSIL - > Value Type                                          |
-|                       | C# Built-in Types are struct  (int,float,char, double....) <br /> int x; //   Int x=new Int(); |
+| Class                     | struct                                                       |
+| ------------------------- | ------------------------------------------------------------ |
+| Object -> Heap            | Object -> stack,heap,static                                  |
+| MSIL -> ReferenceType     | MSIL - > Value Type                                          |
+|                           | C# Built-in Types are struct  (int,float,char, double....) <br /> int x; //   Int x=new Int(); |
+| Pass By Reference Default | Pass By Value  (Default)                                     |
 
 
 
@@ -790,11 +792,191 @@ public class A
 
 > Explore Singleton instance pattern
 
-```
+```C#
 public class ICU{
 
+	private static ICU instance=null;
+	static ICU(){
+        instance=new ICU();
+	
+	}
+    private ICU(){} //private constructor
+    
+    public static  ICU GetInstance(){
+        return ICU.instance;
+    }
+    
+}
+
+Main(){
+    
+    //ICU obj=new ICU();//Error- InAccessible due to protection level
+    ICU obj=ICU.GetInstance();//Typeload - Static Initializer Invoked + ICU instantiated 								+ Returns instance reference,
+    ICU obj2=ICU.GetInstance();//returns existing instance reference;
+    
 }
 
  
+```
+
+
+
+### const and readonly
+
+> const : An identifier whose value never change , compile time initialized identifier
+
+
+
+```C#
+public class Account{
+ //const int MINBALANCE; Error , const variables must be intiatilezed @compile time
+public const int MINBALANCE=5000; // MSIL "static literal int MINBALANCE=5000";
+
+}
+
+Main(){
+    
+    Account.MINBALANCE=5000;//error - const cannot be initialized @ runtime
+}
+```
+
+
+
+> How to define const , where value can be set @runtime
+
+```C#
+public class Account{
+ //const int MINBALANCE; Error , const variables must be intiatilezed @compile time
+public const int MINBALANCE=5000; // MSIL "static literal int MINBALANCE=5000";
+int balance;
+readonly string panNumber; //readonly members must be initialized in constructor only!
+public Account(string pan){
+    
+    this.panNumber="";
+    this.panNumber=pan;
+    
+}
+public void Change(string value)
+{
+    this.panNumber=value;//error - readonly members cannot be initialized outside constructor
+}
+    
+
+}
+
+Main(){
+    
+    Account.MINBALANCE=5000;//error - const cannot be initialized @ runtime
+    Account _one=new Account("ADYPV0026G");
+    Account _two=new Account("ASDVG00568");
+}
+```
+
+#### static readonly
+
+> static readonly members must be initialized using static initializer
+
+---
+
+```C#
+public class ICU{
+
+	private static readonly  ICU instance=null;
+	static ICU(){
+        instance=new ICU();
+	
+	}
+    private ICU(){} //private constructor
+    
+    public static  ICU GetInstance(){
+        ICU.instance=null;// error : static readonly fields cannot be initialized outside other than static intializer (constructor)
+        return ICU.instance;
+    }
+    
+}
+
+Main(){
+    
+    //ICU obj=new ICU();//Error- InAccessible due to protection level
+    ICU obj=ICU.GetInstance();//Typeload - Static Initializer Invoked + ICU instantiated 								+ Returns instance reference,
+    ICU obj2=ICU.GetInstance();//returns existing instance reference;
+    
+}
+```
+
+
+
+### Checkpoint
+
+----
+
+```C#
+class A{
+
+    int x; //instance variable
+    static int y; // type variable
+    readonly int z;// instance variable- constructor initialization 
+    static readonly int p;//static constructor initialization only 
+    const int q=100; //compiletime initialization only
+
+}
+```
+
+
+
+#### ref ,out and params
+
+---
+
+> Function Arguments
+>
+> Pass by Value : For value type
+>
+> Pass By Reference : For Reference type
+
+
+
+> pass by reference :
+>
+> 1. ref :- callee expects intial value for ref arguments  from caller
+>
+> 2. out : caller expects value for out arguments from callee
+
+```C#
+
+public class Compute{
+public static  void Sum(ref int x,int y){
+
+    	x=x+y;
+}
+}
+
+static void Main(){
+ 
+    int x=10; // ....local variables must be intilaized
+    int y=20;
+    Compute.Sum(ref x,y); //  x adress , y copy  given to Sum ...ref arguments sholud be initialized by caller
+    
+    string data="1234";
+    int value; // Not-initialized by Main(Caller) method ...because "value" is passed as out valriable and out valriables are expected to be initialized by callee method .
+    if(Converter,ConvertToInt(data,out value)){
+        
+    }
+    
+    
+}
+
+//out keyword usage 
+public class Converter{
+    
+    public static bool ConvertToInt(string data,out int convertedValue){
+        
+        // all the out variables must be initialized before control leave the method
+        convertedValue=0;
+        //write convert logic here
+        return true;
+    }
+}
+
 ```
 
