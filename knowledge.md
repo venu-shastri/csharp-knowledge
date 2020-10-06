@@ -1213,3 +1213,309 @@ void Listen(params Socket[] endpoints){
 Listen(new Soket(),new Socket(),new Socket());
 ```
 
+
+
+#### Parametric Polymorphism
+
+> It enables the creation of generic functions and class or struct  that operate on values, regardless of data type
+>
+> C#- Generics
+
+
+
+```C#
+//T is known as TypeParameter (placeholder for DataType)
+void Swap<T>(T x,T y)
+{
+    
+}
+//Value for T will be instantiated when Swap function is called
+Swap<int>(10,20);
+Swap<string>("Ten","twenty");
+
+
+class Stack<T>{
+    
+    T[] items;//T value will be determined , when Stack object instantiated
+}
+
+Stack<int> _integerStack=new Stack<int>();
+Stack<string> _stringStack=new Stack<string>();
+```
+
+
+
+#### Checkpoint
+
+```C#
+class List{
+ int[] buffer;
+}
+
+class List{
+    
+    object[] buffer;
+}
+
+class List<T>{
+    
+    T[] buffer;
+}
+
+
+```
+
+
+
+#### Collections
+
+----
+
+> Built in Collections (Data Structure)
+>
+> - indexed Base Collection (List)
+> - Key Based Collection (Dictionary , HashTable)
+> - Ordered Based Collection (Stack,Queue)
+>
+> Object Based Collection (Boxing and UnBoxing Issues)
+>
+> System.Collection Namesapce
+>
+> Generic Based Collection (Parameteric Polymorphism)
+>
+> System.Collection.Generic
+
+
+
+#### Reusability (OOP)
+
+----
+
+1. Completed Code Reuse
+2. Object Reuse
+
+##### Complete Code reuse
+
+----
+
+> Inheritance
+>
+> Semantic Rules need to be satisfied
+>
+> - family 
+>
+> - Separate Commonality and Variation 
+>
+>   - let variation can reuse commonality code
+>
+> - Express Generalization and Specialization 
+>
+>   - let specialization can reuse Generalization code
+>
+> - "is-a" relationship, parent-child relationship
+>
+> - Protected Members (private + private for family)
+>
+> - ```C#
+>   public class A{
+>   	private int x;
+>       protected int y;
+>       public int z;
+>      }
+>   public class B:A{
+>       
+>       public void Task(){
+>           
+>           this.x=10;//error
+>           this.y=20;//yes
+>           this.z=100;//yes
+>           
+>       }
+>   }
+>   
+>   static void Main(){
+>       B obj=new B();
+>       obj.x;//error
+>       obj.y;//error
+>       obj.z;//Allowed
+>       obj.Task();
+>   }
+>   ```
+>
+>   
+>
+> Inheritance Types
+>
+> - Single 
+>
+> - ```C#
+>   class A{
+>   
+>   }
+>   
+>   class B:A{
+>   
+>   }
+>   ```
+>
+>   
+>
+> - Multiple
+>
+> - ```C#
+>   class A{
+>   
+>   }
+>   class B{
+>   
+>   }
+>   //Error
+>   class C:A,B{
+>   
+>   }
+>   ```
+>
+>   
+>
+> - Multilevel
+>
+> - ```C#
+>   class A{
+>   
+>   }
+>   class B:A{
+>   
+>   }
+>   
+>   class C:B{
+>   
+>   }
+>   ```
+>
+>   
+>
+> - Hierarchy
+>
+> - ```C#
+>   class A{
+>   
+>   }
+>   class B:A{
+>   
+>   }
+>   class C:A{
+>   
+>   }
+>   ```
+>
+>   
+>
+> - Hybrid
+>
+> - ```C#
+>   //Not Supported in C#
+>   class A{}
+>   class B:A{}
+>   class C:A{}
+>   class D:B,C{}
+>   
+>   ```
+>
+>   
+>
+> - C#:- Single,Multilevel,Hierarchy
+>
+> - Order of Constructor Execution
+>
+>   - Parent -> Children
+>   - Be Default Child(Derived) class Constructor can invoke Base Class /Parent class Default Constructor
+>   - Child Class Constructor can explicitly Call Base Class Constructor
+>
+> - ```C#
+>   class A{
+>   public A(){
+>   Console.WriteLine("A")
+>   }
+>   public A(int x){
+>       Console.WriteLine("A.A(x)");
+>   }
+>   }
+>   class B:A{
+>       public B(){
+>           //Complier generated MSIL - A.A()
+>           Console.WriteLine("B");
+>       }
+>       //Explicit Base Class Constructor Call
+>       public B(int x):base(x){
+>           //Complier generated MSIL - A.A(x)
+>            Console.WriteLine("B.B(x)");
+>           
+>       }
+>       
+>   }
+>   
+>   B obj=new B();
+>   B newObj=new B(100);
+>   ```
+>
+>   
+
+
+
+```C#
+    public class Control
+    {
+        public int Height { get; set; }
+        public int Width { get; set; }
+
+    }
+	
+    public class Button:Control
+    {
+        
+        //Auto Property
+        public string Caption { get; set; }
+
+    }
+    public class TextBox:Control
+    {
+     
+        public string Text { get; set; }
+        public string Color { get; set; }
+        public string FontSize { get; set; }
+    }
+
+    public class ComboBox:Control
+    {
+      
+        public string Caption { get; set; }
+
+        public List<object> Items { get; set; }
+    }
+```
+
+
+
+#### Checkpoint
+
+
+
+```C#
+class List
+{
+
+}
+
+class Stack:List{
+
+}
+
+class Rectangle{
+    
+}
+
+class Square:Rectangle{
+    
+}
+```
+
