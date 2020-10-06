@@ -1,0 +1,2 @@
+D:\knowledge\csharp-knowledge\Samples\DataStructureDemo\obj\Debug\DataStructureDemo.csprojAssemblyReference.cache
+D:\knowledge\csharp-knowledge\Samples\DataStructureDemo\obj\Debug\DataStructureDemo.csproj.CoreCompileInputs.cache

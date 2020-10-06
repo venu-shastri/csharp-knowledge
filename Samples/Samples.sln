@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tally", "Tally\Tally.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keywords", "Keywords\Keywords.csproj", "{49AF470E-5B01-4482-A8DA-15D9917EE018}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructureDemo", "DataStructureDemo\DataStructureDemo.csproj", "{A6D50383-D7D5-4399-AE68-0616B381032C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{49AF470E-5B01-4482-A8DA-15D9917EE018}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49AF470E-5B01-4482-A8DA-15D9917EE018}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49AF470E-5B01-4482-A8DA-15D9917EE018}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6D50383-D7D5-4399-AE68-0616B381032C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6D50383-D7D5-4399-AE68-0616B381032C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6D50383-D7D5-4399-AE68-0616B381032C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6D50383-D7D5-4399-AE68-0616B381032C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
