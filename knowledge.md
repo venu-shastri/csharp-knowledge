@@ -1877,6 +1877,22 @@ class TestClass{
     }
 }
 
-
+//Dev Enviornment
+                           
+  ILogger _logger=new FileLogger();
+  Calculator obj=new Calculator(_logger);
+                           
+//production Environment
+ ILogger _logger=new APILogger();
+ Calculator obj=new Calculator(_logger);       
+                           
+                           
+//Test Environment
+ ILogger _logger=new FakeLogger();
+ Calculator obj=new Calculator(_logger);
+                           
+                           
+                           
+                           
 ```
 
