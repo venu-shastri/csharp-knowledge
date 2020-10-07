@@ -260,6 +260,13 @@ namespace DataStructureDemo
             _doubleList[0] = 12.34;
 
 
+            System.Collections.ArrayList list = new System.Collections.ArrayList();
+            list.Add(10);//Boxing
+            object _value=list[0];//indexer access
+            
+
+            System.Collections.Generic.List<int> _genList = new System.Collections.Generic.List<int>();
+            _genList.Add(10);
 
 
 

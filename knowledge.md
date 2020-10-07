@@ -1514,8 +1514,369 @@ class Rectangle{
     
 }
 
+//Not Valid
 class Square:Rectangle{
     
 }
+```
+
+
+
+### Object Reuse
+
+----
+
+> has-a relationship - uses , Dependency 
+
+```
+class ToyotaCar{
+
+//has-a
+VTTEngine _engineRef=new VTTEngine();
+
+}
+
+classs VTTEngine{
+
+}
+```
+
+### Abstract , Virtual , Sealed , Override
+
+### abstract -class
+
+----
+
+> How to restrict instantiation  of commonality or Generalized information or base class - because class holds reusable code(not concrete) for family - members(derived) ?
+>
+> solution : "Mark base class constructor **protected** " or Let Compiler generate protected constructor
+
+```C#
+abstract class A{
+
+    //Compiler Generate Protected Constructor in MSIL -> protected A(){}
+}
+class B:A{
+ public B(){
+//MSIL A.A()
+ }
+}
+
+A obj=new A();//Error
+B obj=new B();//Valid - instance of Concrete Class
+```
+
+### abstract method
+
+----
+
+> template method :- implementation vary from one family member to another
+
+
+
+##### Example - 1
+
+```C#
+  public abstract  class Control
+    {
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public abstarct void Draw();
+
+    }
+	
+    public class Button:Control
+    {
+        
+        //Auto Property
+        public string Caption { get; set; }
+        public override void Draw(){
+            //implementation
+        }
+
+    }
+    public class TextBox:Control
+    {
+     
+        public string Text { get; set; }
+        public string Color { get; set; }
+        public string FontSize { get; set; }
+         public override void Draw(){
+            //implementation
+        }
+    }
+
+	//Error: Draw method is not overriden
+    public class ComboBox:Control
+    {
+      
+        public string Caption { get; set; }
+
+        public List<object> Items { get; set; }
+    }
+```
+
+
+
+##### Example - 2
+
+```C#
+public abstract class Vehicle{
+
+    public int torque;
+    public ing bhp;
+    public string Model;
+    public void Start(){}
+    public void Stop(){}
+    public abstract  void DriveTransmission();
+}
+
+public class Car:Vehicle{
+    
+        public override  void DriveTransmission(){ //AWD,RWD, FWD }
+}
+public class Truck:Vehicale{
+            public override  void DriveTransmission(){ //RWD } 
+}
+
+
+```
+
+
+
+#### virtual methods
+
+----
+
+> concrete methods - method has implementation - 
+>
+>  "Open" methods(Can be overridden ) - "Closed Methods (cannot be overridden in derived classes)"
+
+```
+public abstract class Vehicle{
+
+    public int torque;
+    public ing bhp;
+    public string Model;
+    //concrete - open methods
+    public virtual void Start(){ //Key based Start }
+    //concrete - closed methods
+    public void Stop(){//Key based Stop }
+    public abstract  void DriveTransmission();
+}
+
+public class Car:Vehicle{
+    
+        public override  void DriveTransmission(){ //AWD,RWD, FWD }
+        public override void Strat(){ 
+        
+         //Push Button Start
+        }
+}
+public class Truck:Vehicale{
+            public override  void DriveTransmission(){ //RWD } 
+}
+```
+
+
+
+```
+class Stream{
+public virtual void Read() { //Byte by Byte}
+public virtual void Write(){ //Byte }
+}
+
+class BufferedStream:Stream{
+
+public override void Read(){  //Block Read }
+public override void Write(){  //Block Write }
+}
+
+
+```
+
+
+
+#### Shadowing
+
+----
+
+```C#
+public class A{
+pubic void M(){ //Impl }
+public virtual Q(){ //Imp }
+}
+
+public class B:A{
+    public void N(){}
+    public new void Q(){}
+}
+    
+public class C:A{
+    
+    public void P(){}
+    public new  void M(){ base.M(); // + New Implementation }
+    public override void Q(){}
+                         	
+                         
+}
+    
+void ClientOne(B obj){
+    
+    obj.M();
+    obj.N();
+}
+    
+void ClientTwo(C obj){
+    
+    obj.M();
+    obj.P();
+}
+```
+
+
+
+#### Checkpoint
+
+```C#
+public class A{
+public virtual void M(){}
+}
+
+public class B{
+    
+    //Should override or shadow the base class method M() ?
+}
+```
+
+
+
+#### Sealed 
+
+> context based keyword
+>
+> 1. class : restricts inheritance
+> 2. method :- " sealed override"  - restricts inheritance of virtual property of method
+
+```C#
+public sealed class A{
+
+}
+
+//Error: Sealed classes cannot be inherited
+public class B:A
+{
+
+}
+```
+
+
+
+```C#
+public class A{
+
+    public virtual M(){}
+}
+public class B:A{
+    // override - virtual
+    public override void M(){}
+}
+public class C:B{
+    //restrics Children of "c" from overriding M()
+    public sealed override void M(){
+        
+    }
+}
+public class D:C{
+    //Error : - base class resticted virtual property of Method M()
+    public override void M(){}
+    public void N(){
+        base.M();
+    }
+    //Shadowing Allowed
+    public new virtual   void M(){
+        
+    }
+}
+public class E:D{
+    
+    public override void M(){}
+}
+```
+
+
+
+#### Abstraction 
+
+----
+
+> has-a relationship 
+>
+> Dependency
+>
+> One object uses another object
+>
+> Dependency Management
+>
+> - unit test (Behavioral testing - mock , stub)
+> - Loosely coupled (Change)
+>
+> Abstraction : Essential for Communication
+>
+> ​						public view of an object = interface
+>
+> ​	
+
+```C#
+//contract 
+public interface ILogger{
+    void Write(string msg); // By default interface methods are public,abstract
+}
+//FileLogger implements ILogger
+public class FileLogger:ILogger{
+	string  filePath="D:\logs\log.txt"
+	public void Write(string msg){
+		//File
+	}
+	
+}
+//ApiLogger implements ILogger
+public class ApiLogger:ILogger{
+    string netWorkAddress="http://www.pic.com/logs";
+     void Connect(){}
+     void Disconnect(){}
+    public void Write(string msg){
+        
+    }
+}
+public class Calculator{
+    ILogger _logger;
+    public Calculator(ILogger logger){
+        this._logger=logger;
+    }
+    public int   Add(int x,int y){
+        
+        this._logger.Write("Add Method Called "");
+        return x+y;
+    }
+}
+                           //Unit Test Code - Machine "Y" ->"Drive C,E"
+                           
+class FakeLogger:ILogger{
+    public void Write(string msg){
+        //
+    }
+}
+class TestClass{
+    
+    public void Given_10_and_20_When_Add_Called_Then_Expected_30(){
+        ILogger _stub=new FakeLogger();
+        Calculator _objUnderTest=new Calculator(_stub);
+       int  actualValue= _objUnderTest.Add(10,20);
+        Assert.AreEquals(actualValue,30);
+    }
+}
+
+
 ```
 

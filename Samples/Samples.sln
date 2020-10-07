@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keywords", "Keywords\Keywor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataStructureDemo", "DataStructureDemo\DataStructureDemo.csproj", "{A6D50383-D7D5-4399-AE68-0616B381032C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientation", "ObjectOrientation\ObjectOrientation.csproj", "{32C66E6A-4BE9-44DF-ADC2-B5456D7F3899}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A6D50383-D7D5-4399-AE68-0616B381032C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6D50383-D7D5-4399-AE68-0616B381032C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6D50383-D7D5-4399-AE68-0616B381032C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32C66E6A-4BE9-44DF-ADC2-B5456D7F3899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C66E6A-4BE9-44DF-ADC2-B5456D7F3899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C66E6A-4BE9-44DF-ADC2-B5456D7F3899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C66E6A-4BE9-44DF-ADC2-B5456D7F3899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
