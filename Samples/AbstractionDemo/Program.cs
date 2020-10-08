@@ -7,7 +7,32 @@ using System.Threading.Tasks;
 
 namespace AbstractionDemo
 {
-    public class Person
+    public interface IFriend
+    {
+
+        void Anger();
+        void JoyOrLaughter();
+
+        void Sorrow();
+
+    }
+
+    public interface IFamilyMember
+    {
+        void JoyOrLaughter();
+
+        void Sorrow();
+
+
+    }
+
+    public interface IProfessionalWorker {
+
+        void JoyOrLaughter();
+        void Sorrow();
+        void Professional();
+    }
+    public class Person:IFriend,IFamilyMember,IProfessionalWorker
     {
         public void Professional() { }
         public void Anger() { }
@@ -25,23 +50,21 @@ namespace AbstractionDemo
             Family(_personInstance);
             Office_Work(_personInstance);
         }
-        static void Hangout_friends(Person pObj) {
+        static void Hangout_friends(IFriend pObj) {
 
             pObj.Anger();
             pObj.JoyOrLaughter();
-            pObj.Professional();// Not-Valid
             pObj.Sorrow();
         }
-        static void Family(Person pobj) {
-            pobj.Anger();//not-valid
-            pobj.Professional();//not -valid
+        static void Family(IFamilyMember pobj) {
+            
             pobj.Sorrow();
             pobj.JoyOrLaughter();
         }
 
-        static void Office_Work(Person pObj)
+        static void Office_Work(IProfessionalWorker pObj)
         {
-            pObj.Anger();//Not-valid
+            
             pObj.JoyOrLaughter();
             pObj.Professional();
             pObj.Sorrow();
