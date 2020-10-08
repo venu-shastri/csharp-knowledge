@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectOrientation", "Object
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractionDemo", "AbstractionDemo\AbstractionDemo.csproj", "{E4301380-FD46-4626-9915-4230E6BA47B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventDemo", "EventDemo\EventDemo.csproj", "{63DADEEB-95EA-4A7C-91A3-42C690857E79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateInternals", "DelegateInternals\DelegateInternals.csproj", "{0A61A135-8CFD-4EFD-8040-7F6487F42471}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{E4301380-FD46-4626-9915-4230E6BA47B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4301380-FD46-4626-9915-4230E6BA47B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4301380-FD46-4626-9915-4230E6BA47B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63DADEEB-95EA-4A7C-91A3-42C690857E79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63DADEEB-95EA-4A7C-91A3-42C690857E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63DADEEB-95EA-4A7C-91A3-42C690857E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63DADEEB-95EA-4A7C-91A3-42C690857E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A61A135-8CFD-4EFD-8040-7F6487F42471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A61A135-8CFD-4EFD-8040-7F6487F42471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A61A135-8CFD-4EFD-8040-7F6487F42471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A61A135-8CFD-4EFD-8040-7F6487F42471}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

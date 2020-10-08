@@ -2096,3 +2096,137 @@ public class A
 }
 ```
 
+
+
+
+
+#### Delegate
+
+---
+
+> Function Pointer :- "Pass Function as an Argument" , An alternative to Runtime polymorphism to achieve abstraction. 
+>
+> Why "Function as an Argument"
+>
+> - Thread -  depends on function pointer to get to know "execution start point "
+> - Asynchronous Programming - "How to pass address of callback function"
+> - Event Driven programming - "How to pass address of function as a EventHandler"
+>
+> Function Pointer equivalence  - C#
+>
+> "Command + Composite Command Pattern" 
+>
+> C# Compiler help - keyword "delegate" 
+>
+> - Generates Command Class 
+
+### pointers(holds memory address)
+
+---
+
+> every pointer associated with "target"
+>
+> - pointer to variable - target "DataType"
+> - Pointer to function - target "Method Signature"
+
+```
+int *p;// p is a pointer  , which can store memory address of integer data
+
+//Function pointer Declaration
+void (*fp)(int x); // fp is a function pointer , which can store address of any method ,provided method signature should be void(int x)
+```
+
+
+
+What is Delegate
+
+----
+
+A [delegate](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/reference-types) keyword generate  command class (Compiler Generated ) that represents references to methods with a particular parameter list and return type. When you instantiate a command class , you can associate its instance with any method with a compatible signature and return type. You can invoke (or call) the method through the command instance. Delegates are used to pass methods as arguments to other methods
+
+```C#
+public delegate <TargetMethodReturnType> <CommandClassName>(TargetMethod Argumnet List);
+
+ex:
+public delegate int PerformCalculation(int x, int y);
+/*
+MSIL
+public class PerformCalculation{
+
+public int Invoke(int x, int y){
+
+}
+}
+
+*/
+
+public class Calculator{
+    
+    public int Add(int x,int y){
+        return x+y;
+    }
+    public double Add(double x, double y){
+        return x+y;
+    }
+}
+
+public class Computer{
+    
+    public void Compute(PerformCalculation obj){
+        
+      int result  =obj.Invoke(10,20);
+    }
+}
+
+class Program {
+    
+    static void Main(){
+        
+        Calculator _calcObj=new Calculator();
+        PerformCalculation _funObject=new  PerformCalculation(_calcObj.Add);
+        Computer _comp=new Computer();
+        _comp.Compute(_funObject);
+        
+    }
+}
+
+
+```
+
+
+
+#### CheckPoint
+
+- Multicast Delegate Instances
+- "event" keyword
+- Generic Delegates
+- Two Built-in delegates 
+  - Func
+  - Action
+- Lamda 
+
+
+
+#### Books references
+
+----
+
+- C# in Depth
+- Object Oriented Thought Process
+- Programming Language Pragmatics
+- Art of unit testing
+
+My Contact Details
+
+---
+
+Venugopal Shastri
+
+venu.shastri@gmail.com
+
++91 9880455636
+
+
+
+Thanks!!!!!
+

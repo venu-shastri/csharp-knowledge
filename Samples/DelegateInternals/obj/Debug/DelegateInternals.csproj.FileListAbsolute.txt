@@ -1,0 +1,6 @@
+D:\knowledge\csharp-knowledge\Samples\DelegateInternals\bin\Debug\DelegateInternals.exe.config
+D:\knowledge\csharp-knowledge\Samples\DelegateInternals\bin\Debug\DelegateInternals.exe
+D:\knowledge\csharp-knowledge\Samples\DelegateInternals\bin\Debug\DelegateInternals.pdb
+D:\knowledge\csharp-knowledge\Samples\DelegateInternals\obj\Debug\DelegateInternals.csproj.CoreCompileInputs.cache
+D:\knowledge\csharp-knowledge\Samples\DelegateInternals\obj\Debug\DelegateInternals.exe
+D:\knowledge\csharp-knowledge\Samples\DelegateInternals\obj\Debug\DelegateInternals.pdb

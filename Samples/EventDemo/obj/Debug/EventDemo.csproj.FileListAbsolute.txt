@@ -1,0 +1,7 @@
+D:\knowledge\csharp-knowledge\Samples\EventDemo\bin\Debug\EventDemo.exe.config
+D:\knowledge\csharp-knowledge\Samples\EventDemo\bin\Debug\EventDemo.exe
+D:\knowledge\csharp-knowledge\Samples\EventDemo\bin\Debug\EventDemo.pdb
+D:\knowledge\csharp-knowledge\Samples\EventDemo\obj\Debug\EventDemo.csprojAssemblyReference.cache
+D:\knowledge\csharp-knowledge\Samples\EventDemo\obj\Debug\EventDemo.csproj.CoreCompileInputs.cache
+D:\knowledge\csharp-knowledge\Samples\EventDemo\obj\Debug\EventDemo.exe
+D:\knowledge\csharp-knowledge\Samples\EventDemo\obj\Debug\EventDemo.pdb
