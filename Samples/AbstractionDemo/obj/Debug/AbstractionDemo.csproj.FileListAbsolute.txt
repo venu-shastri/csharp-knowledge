@@ -4,3 +4,4 @@ D:\knowledge\csharp-knowledge\Samples\AbstractionDemo\bin\Debug\AbstractionDemo.
 D:\knowledge\csharp-knowledge\Samples\AbstractionDemo\bin\Debug\AbstractionDemo.pdb
 D:\knowledge\csharp-knowledge\Samples\AbstractionDemo\obj\Debug\AbstractionDemo.exe
 D:\knowledge\csharp-knowledge\Samples\AbstractionDemo\obj\Debug\AbstractionDemo.pdb
+D:\knowledge\csharp-knowledge\Samples\AbstractionDemo\obj\Debug\AbstractionDemo.csprojAssemblyReference.cache
