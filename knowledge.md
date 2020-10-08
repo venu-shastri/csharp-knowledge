@@ -1909,3 +1909,190 @@ class TestClass{
 - An interface can't be instantiated directly. Its members are implemented by any class or struct that implements the interface.
 - An interface define contract (Vocabulary to be used in the dialog b/w two objects )
 - An interface can contain non implemented methods, properties and events
+
+
+
+### Exception Handling
+
+---
+
+> exception :- runtime error, instance of class -> describes runtime error
+>
+> Who instantiate : runtime or program
+>
+> Describes ?
+>
+> - Thread Identity
+> - Message
+> - Method 
+> - Class Name
+> - Stack Trace
+>
+> Handling ? 
+>
+> - set pointer/reference to an instance of exception
+>
+> unhandled Exception :- Thread Execution unable to refer instance of Exception
+
+C# Support Exception Handling
+
+> - Structured Exception Handling
+> - Exception class derived from "System.Exception"
+> - Clauses : try, catch, throw and finally
+
+```C#
+public class Calculator{
+    public int Div(int x,int y){
+        int result=default(0);
+        try{
+        result=x/y;
+        }
+        //Set Reference/pointer -> exception object
+        catch(DivideByZeroException obj)
+        {
+           //Handling Code
+            //Log
+            throw new InvalidArgumentException ("y argumet cannot be Zero");
+        }
+        return result;
+    }
+}
+
+static void Main(){
+    
+    Calculator obj=new Calculator();
+    try{
+		   int result= obj.Div(10,2);
+    }
+    catch(InvalidArgumentException ex){
+        
+    }
+    result=obj.Div(10,0);
+}
+```
+
+
+
+```C#
+try{
+	statement 1.
+	statement 2//Exception
+	statement 3.
+	.
+	.
+	.
+	.statement n
+}
+catch(FileNotFoundException obj){}
+catch(SecurityException obj){}
+catch(DBException obj){}
+catch(System.Exception obj){} //Last in the exception catch block list
+```
+
+```
+try{
+	statement 1.
+	statement 2//Exception in - Go to Catch Block
+	statement 3.
+	.
+	.
+	.
+	.statement n
+}
+catch(FileNotFoundException obj){}
+catch(SecurityException obj){}
+catch(DBException obj){}
+catch(System.Exception obj){} //Last in the exception catch block list
+
+statement n+1.....
+```
+
+```C#
+try{
+	statement 1.
+	try{
+	statement 2//Exception
+	}
+	catch(Exception obj)
+	{
+	
+	}
+	statement 3.
+	.
+	.
+	.
+	.statement n
+}
+catch(FileNotFoundException obj){}
+catch(SecurityException obj){}
+catch(DBException obj){}
+catch(System.Exception obj){} //Last in the exception catch block list
+```
+
+##### finally
+
+---
+
+> Guaranteed code - executed before control leaves try block (exception or not )
+>
+> Usage : Resource Cleanup , Closing File Handle , Dispose Objects , DB Connection release
+>
+> 
+>
+>  
+
+```C#
+public void ProcessFile(string path){
+
+		//open file
+		//read file
+		//write file
+		//close file
+		try{
+		File.Open(path);
+		//read
+		//write ->Exception -> Control -> Catch Block
+		}
+		catch(FileNotFoundException ex){
+		
+		}
+		catch(PermissionDeniedException ex){
+		
+		}
+		finally{
+		File.Close(path);
+		}
+}
+```
+
+#### Checkpoint
+
+---
+
+```C#
+public class A
+{
+	public static void Main()
+	{
+		Div(10,2);
+        Div(10,0);
+	}
+
+	static void Div(int x,int y)
+	{
+		try{
+			int result=x/y;
+			System.Console.WriteLine("Statement 1");
+			
+		}
+		catch(System.DivideByZeroException ex){
+			System.Console.WriteLine("Statement in catch Block");
+		}
+		finally{
+			System.Console.WriteLine("Statement in Finally");
+		}
+		System.Console.WriteLine("Statement N");
+	}
+}
+```
+
