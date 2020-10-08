@@ -1896,3 +1896,16 @@ class TestClass{
                            
 ```
 
+
+
+### interface
+
+---
+
+- public view of an object
+- By convention, interface names begin with a capital `I`.
+- Any class or struct that implements the interface must contain a definition for all the  methods that matches the signature that the interface specifies.
+- A class or struct can implement multiple interfaces, but a class can only inherit from a single class.
+- An interface can't be instantiated directly. Its members are implemented by any class or struct that implements the interface.
+- An interface define contract (Vocabulary to be used in the dialog b/w two objects )
+- An interface can contain non implemented methods, properties and events
