@@ -1445,12 +1445,14 @@ public class Program{
     static void Main(){
         DynamicArray<int> _dynamicArray=new DynamicArray<int>(5);
         _dynamicArray[0]=100;// _dynamicArray.set_Item(0,100);
-        _dynamicArray[1]="200";
+        _dynamicArray[1]=200;
         _dynamicArray[2]=300;
         _dynamicArray[3]=400;
         _dynamicArray[4]=500;
-        _dynamicArray[5]="Six hundred";
+        _dynamicArray[5]=600;
        int value=_dynamicArray[5];//_dynamicArray.get_Item(5);
+        
+        DynamicArray<string> _stringArray=new DynamicArray<string>();
         
         System.Console.WriteLine("Number Of Elements in DynamicArray" + _dynamicArray.ItemCount);
          System.Console.WriteLine("DynamicArray Capacity" + _dynamicArray.Capacity);
@@ -1499,9 +1501,130 @@ class List<T>{
 >
 > System.Collection Namesapce
 >
-> Generic Based Collection (Parameteric Polymorphism)
+> Generic Based Collection (Parametric Polymorphism)
 >
 > System.Collection.Generic
+
+
+
+### CheckPoint
+
+```c#
+public class TradeProcessor
+{
+    public void ProcessTrades(System.IO.Stream stream)
+    {
+        // read rows
+        var lines = new List<string>();
+        using(var reader = new System.IO.StreamReader(stream))
+        {
+            string line;
+            while((line = reader.ReadLine()) != null)
+            {
+                lines.Add(line);
+            }
+        }
+
+        var trades = new List<TradeRecord>();
+
+        var lineCount = 1;
+        foreach(var line in lines)
+        {
+            var fields = line.Split(new char[] { ',' });
+
+            if(fields.Length != 3)
+            {
+                Console.WriteLine("WARN: Line {0} malformed. Only {1} field(s) found.",
+  lineCount, fields.Length);
+                continue;
+            }
+
+            if(fields[0].Length != 6)
+            {
+                Console.WriteLine("WARN: Trade currencies on line {0} malformed: '{1}'",
+  lineCount, fields[0]);
+                continue;
+            }
+
+            int tradeAmount;
+            if(!int.TryParse(fields[1], out tradeAmount))
+            {
+                Console.WriteLine("WARN: Trade amount on line {0} not a valid integer:
+  '{1}'", lineCount, fields[1]);
+            }
+
+            decimal tradePrice;
+            if (!decimal.TryParse(fields[2], out tradePrice))
+            {
+                Console.WriteLine("WARN: Trade price on line {0} not a valid decimal:
+  '{1}'", lineCount, fields[2]);
+            }
+
+            var sourceCurrencyCode = fields[0].Substring(0, 3);
+            var destinationCurrencyCode = fields[0].Substring(3, 3);
+
+            // calculate values
+            var trade = new TradeRecord
+            {
+                SourceCurrency = sourceCurrencyCode,
+                DestinationCurrency = destinationCurrencyCode,
+                Lots = tradeAmount / LotSize,
+                Price = tradePrice
+            };
+
+            trades.Add(trade);
+
+            lineCount++;
+        }
+
+        using (var connection = new System.Data.SqlClient.SqlConnection("Data
+  Source=(local);Initial Catalog=TradeDatabase;Integrated Security=True"))
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                foreach(var trade in trades)
+                {
+                    var command = connection.CreateCommand();
+                    command.Transaction = transaction;
+                    command.CommandType = System.Data.CommandType.StoredProcedure;
+                    command.CommandText = "dbo.insert_trade";
+                    command.Parameters.AddWithValue("@sourceCurrency", trade.
+  SourceCurrency);
+                    command.Parameters.AddWithValue("@destinationCurrency", trade.
+  DestinationCurrency);
+                    command.Parameters.AddWithValue("@lots", trade.Lots);
+                    command.Parameters.AddWithValue("@price", trade.Price);
+
+                    command.ExecuteNonQuery();
+                }
+
+                transaction.Commit();
+            }
+            connection.Close();
+        }
+
+        Console.WriteLine("INFO: {0} trades processed", trades.Count);
+    }
+
+    private static float LotSize = 100000f;
+}
+
+
+
+
+class TradeRecord
+    {
+        public string SourceCurrency { get; set; }
+
+        public string DestinationCurrency { get; set; }
+
+        public float Lots { get; set; }
+
+        public decimal Price { get; set; }
+    }
+
+```
 
 
 
