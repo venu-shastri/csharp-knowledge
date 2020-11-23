@@ -1224,6 +1224,17 @@ Listen(new Soket(),new Socket(),new Socket());
 
 
 ```C#
+void Swap(int x,int y){
+    int temp=x;
+    x=y;
+    y=temp;
+}
+//Any Limitation ?
+int s=10;
+int r=20;
+Swap(s,r)
+
+
 //T is known as TypeParameter (placeholder for DataType)
 void Swap<T>(T x,T y)
 {
@@ -1233,6 +1244,15 @@ void Swap<T>(T x,T y)
 Swap<int>(10,20);
 Swap<string>("Ten","twenty");
 
+class IntegerStack{
+    
+    int[] items;
+}
+class StringStack{
+    string[] items;
+}
+Stack obj1=new Stack();
+Stack obj2=new Stack();
 
 class Stack<T>{
     
@@ -1241,6 +1261,36 @@ class Stack<T>{
 
 Stack<int> _integerStack=new Stack<int>();
 Stack<string> _stringStack=new Stack<string>();
+```
+
+```c#
+public class DynamicArray{
+
+    int[] buffer;
+    public DynamicArray(int capacity){
+        buffer=new int[capacity];
+    }
+    
+    public void set_Item(int index,int value){
+        
+        buffer[index]=value;
+    }
+    public int get_Item(int index){
+        return buffer[index];
+    }
+}
+
+public class Program{
+    static void Main(){
+        DynamicArray _dynamicArray=new DynamicArray(5);
+        _dynamicArray.set_Item(0,100);
+        _dynamicArray.set_Item(1,200);
+        _dynamicArray.set_Item(2,300);
+        _dynamicArray.set_Item(3,400);
+        _dynamicArray.set_Item(4,500);
+        _dynamicArray.set_Item(5,600);
+    }
+}
 ```
 
 
@@ -2207,7 +2257,7 @@ class Program {
 
 
 
-#### Books references
+#### Book references
 
 ----
 
