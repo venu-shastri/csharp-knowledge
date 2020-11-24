@@ -1833,6 +1833,8 @@ class TradeRecord
 
         public List<object> Items { get; set; }
     }
+
+ Control _control=new Control();
 ```
 
 
@@ -1844,11 +1846,19 @@ class TradeRecord
 ```C#
 class List
 {
+    public void Add(){}
+    public void Remove(){}
+    public void InsertAt(int index){}
+    public void RemoveAt(int index){}
+    public void Clear(){}
 
 }
 
 class Stack:List{
 
+    public void Push(){}
+    public void Pop(){}
+    
 }
 
 class Rectangle{
@@ -1882,7 +1892,7 @@ classs VTTEngine{
 }
 ```
 
-### Abstract , Virtual , Sealed , Override
+##### Abstract , Virtual , Sealed , Override
 
 ### abstract -class
 
@@ -1972,14 +1982,27 @@ public abstract class Vehicle{
     public abstract  void DriveTransmission();
 }
 
-public class Car:Vehicle{
+public class MaruthiHatchBackCar:Vehicle{
     
-        public override  void DriveTransmission(){ //AWD,RWD, FWD }
+        public override  void DriveTransmission(){ FWD }
 }
+   
+ public class MahindraScorpioSUV:Vehicle{
+    
+        public override  void DriveTransmission(){ RWD }
+}
+    
+       
+ public class MahindraTharSUV:Vehicle{
+    
+        public override  void DriveTransmission(){ AWD }
+}
+    
 public class Truck:Vehicale{
             public override  void DriveTransmission(){ //RWD } 
 }
 
+  
 
 ```
 
@@ -1993,7 +2016,7 @@ public class Truck:Vehicale{
 >
 >  "Open" methods(Can be overridden ) - "Closed Methods (cannot be overridden in derived classes)"
 
-```
+```C#
 public abstract class Vehicle{
 
     public int torque;
@@ -2009,19 +2032,20 @@ public abstract class Vehicle{
 public class Car:Vehicle{
     
         public override  void DriveTransmission(){ //AWD,RWD, FWD }
-        public override void Strat(){ 
-        
-         //Push Button Start
-        }
+        public override void Start(){ // Button Start }
+     
 }
-public class Truck:Vehicale{
+public class Truck:Vehicle{
             public override  void DriveTransmission(){ //RWD } 
 }
+    
+Car obj=new Car();
+obj.Start();
 ```
 
 
 
-```
+```C#
 class Stream{
 public virtual void Read() { //Byte by Byte}
 public virtual void Write(){ //Byte }
@@ -2168,11 +2192,84 @@ public class E:D{
 >
 > ​	
 
+### Abstraction Violation 
+
+---
+
+```C#
+
+public class FileLogger{
+	string  filePath="D:\logs\log.txt"
+	public void Write(string msg){
+		//File
+	}
+	
+}
+
+//ApiLogger implements ILogger
+public class ApiLogger:ILogger{
+    string netWorkAddress="http://www.pic.com/logs";
+     void Connect(){}
+     void Disconnect(){}
+    public void Write(string msg){
+        
+    }
+}
+
+class FakeLogger:ILogger{
+    public void Write(string msg){
+        //
+    }
+}
+
+public class Calculator{
+    FileLogger _logger;
+    public Calculator(){
+        this._logger=new FileLogger();
+    }
+    public int   Add(int x,int y){
+        
+        this._logger.Write("Add Method Called "");
+        return x+y;
+    }
+}
+                           //Unit Test Code - Machine "Y" ->"Drive C,E"
+                           
+                           
+ class TestClass{
+    
+    public void Given_10_and_20_When_Add_Called_Then_Expected_30(){
+
+        Calculator _objUnderTest=new Calculator();
+       int  actualValue= _objUnderTest.Add(10,20);
+        Assert.AreEquals(actualValue,30);
+    }
+}
+
+//Dev Enviornment
+                           
+  ILogger _logger=new FileLogger();
+  Calculator obj=new Calculator(_logger);
+                           
+//production Environment
+ ILogger _logger=new APILogger();
+ Calculator obj=new Calculator(_logger);       
+                           
+                           
+//Test Environment
+ ILogger _logger=new FakeLogger();
+ Calculator obj=new Calculator(_logger);
+                           
+```
+
+
+
 ```C#
 //contract 
 public interface ILogger{
     void Write(string msg); // By default interface methods are public,abstract
 }
+
 //FileLogger implements ILogger
 public class FileLogger:ILogger{
 	string  filePath="D:\logs\log.txt"
@@ -2190,8 +2287,17 @@ public class ApiLogger:ILogger{
         
     }
 }
+
+//FakeLogger implements ILogger                           
+class FakeLogger:ILogger{
+    public void Write(string msg){
+        //
+    }
+}
 public class Calculator{
+    // Depends on Interface of Loggers
     ILogger _logger;
+    //Constructor Dependency Injection
     public Calculator(ILogger logger){
         this._logger=logger;
     }
@@ -2202,12 +2308,7 @@ public class Calculator{
     }
 }
                            //Unit Test Code - Machine "Y" ->"Drive C,E"
-                           
-class FakeLogger:ILogger{
-    public void Write(string msg){
-        //
-    }
-}
+
 class TestClass{
     
     public void Given_10_and_20_When_Add_Called_Then_Expected_30(){
@@ -2250,6 +2351,58 @@ class TestClass{
 - An interface can't be instantiated directly. Its members are implemented by any class or struct that implements the interface.
 - An interface define contract (Vocabulary to be used in the dialog b/w two objects )
 - An interface can contain non implemented methods, properties and events
+
+### Abstraction Assignment
+
+---
+
+
+
+
+
+```C#
+public class TATACar{
+    DiCorEngine _diCor;
+    public TataCar(){
+        
+        _diCor=new DiCorEngine();
+    }
+    
+    public void Drive(){
+        
+        _diCor.Start();
+    }
+    public void Halt(){
+        
+        _diCor.Stop();
+    }
+    
+
+}
+
+public class DiCorEngine{
+    
+    public void Start(){}
+    public void Stop(){}
+}
+
+public class VeriCorEngine{
+    
+}
+
+public class MultiJetEngine{
+    
+}
+public class RevorTron{ }
+
+//BS IV 
+
+//BS VI
+
+TataCar _harrier=new TataCar();
+TataCar _nexon=new TataCar();
+TataCar _hexa=new TataCar();    
+```
 
 
 
