@@ -43,3 +43,31 @@ public interface INASASpaceDockable
     }
 ```
 
+
+
+### Solution - Explicit Interface Implementation
+
+```C#
+ public class ISROSpaceCraft : INASASpaceDockable,IUSSRSpacDockable
+    {
+        void INASASpaceDockable.Connect()
+        {
+            Console.WriteLine("INASASpaceDockable.Connect()");
+        }
+
+         void INASASpaceDockable.Disconnect()
+        {
+            Console.WriteLine("INASASpaceDockable.Disconnect()");
+        }
+         void IUSSRSpacDockable.Connect()
+        {
+            Console.WriteLine("IUSSRSpacDockable.Connect()");
+        }
+
+         void IUSSRSpacDockable.Disconnect()
+        {
+            Console.WriteLine("IUSSRSpacDockable.Disconnect()");
+        }
+    }
+```
+
