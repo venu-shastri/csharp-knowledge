@@ -50,3 +50,49 @@
     }
 ```
 
+### Built in Func Delegate usge
+
+```C#
+  class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] names = { "philips", "pic", "siemens", "sap" };
+            Func<string,bool> _handler = new Func<string, bool>(Program.CheckStringStartWithp);
+            List<string> _resultList = Iterator(names,_handler);
+            _handler = new Func<string, bool>(Program.CheckStringLengthGreaterThan3);
+            _resultList = Iterator(names, _handler);
+            int[] numbers = { 23, 4, 5, 6, 77, 88 };
+            Func<int,bool> _intHandler = new Func<int,bool>(Program.CheckForEvenNumbers);
+          List<int> intResult=  Iterator<int>(numbers, _intHandler);
+        }
+
+        static bool CheckForEvenNumbers(int item)
+        {
+            return item % 2 == 0;
+        }
+        static bool CheckStringStartWithp(string item)
+        {
+            return item.StartsWith("p");
+        }
+        static bool CheckStringLengthGreaterThan3(string item)
+        {
+            return item.Length > 3;
+        }
+        public static List<T> Iterator<T>(T[] input, Func<T,bool> predicate )
+        {
+            List<T> result = new List<T>();
+
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (predicate.Invoke(input[i]))
+                {
+                    result.Add(input[i]);
+                }
+            }
+
+            return result;
+        }
+    }
+```
+
