@@ -96,3 +96,37 @@
     }
 ```
 
+#### MulticastDelegate Demo
+
+```C#
+ class MultiCastDelegateDemo
+    {
+
+        static void Main()
+        {
+            Action funRef = new Action(MultiCastDelegateDemo.Fun);
+
+            Action fooRef = new Action(MultiCastDelegateDemo.Foo);
+
+            Action moreFunRef = new Action(MultiCastDelegateDemo.MoreFun);
+            funRef += fooRef + moreFunRef;
+
+            // Action _newDelegateRef=System.Delegate.Combine(funRef, fooRef, moreFunRef) as Action;
+            Action _newDelegateRef = funRef + fooRef + moreFunRef;
+
+            if (_newDelegateRef != null)
+            {
+                _newDelegateRef.Invoke(); // Fun,Foo,MoreFun.....
+            }
+
+        }
+
+        static void Fun() { }
+        static void Foo() { }
+
+        static void MoreFun() { }
+
+
+    }
+```
+
