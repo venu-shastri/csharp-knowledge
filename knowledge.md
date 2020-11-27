@@ -2837,6 +2837,116 @@ class Program {
 
 - "event" keyword
 
+- Syntax :  public event <delegateType>  <EventName>; 
+
+  - ```C#
+    public class Subject{
+    
+       public event  Action StateChanged;
+    }
+     public  class ObserverOne
+        {
+            public void Update()
+            {
+                
+            } 
+    
+        }
+    public class ObserverTwo
+        {
+            public void Notify()
+            {
+                
+            }
+        }
+    public class Program
+    {
+    	public static void Main()
+    	{
+    		ObserverOne _observerOne=new ObserverOne();
+    		ObserverTwo _observerTwo=new ObserverTwo();
+    		
+    		Action _observerMethodAddressOne=new Action(_observerOne.Update);
+    		Action _observerMethodAddressTwo=new Action(_observerTwo.Notify);
+    		
+    		Subject _subject=new  Subject();
+    		_subject.StateChanged+=_observerMethodAddressOne;
+    		_subject.StateChanged+=_observerMethodAddressTwo;
+    		
+    	}
+    }
+    
+    //MSIL
+    .class public auto ansi beforefieldinit Subject
+           extends [mscorlib]System.Object
+    {
+      .field private class [mscorlib]System.Action StateChanged
+      .method public hidebysig specialname instance void 
+              add_StateChanged(class [mscorlib]System.Action 'value') cil managed
+      {
+          	//Implementation
+      }
+      .method public hidebysig specialname instance void 
+              remove_StateChanged(class [mscorlib]System.Action 'value') cil managed
+      {
+          //Implementation
+      }
+      .event [mscorlib]System.Action StateChanged
+      {
+        .addon instance void Subject::add_StateChanged(class [mscorlib]System.Action)
+        .removeon instance void Subject::remove_StateChanged(class [mscorlib]System.Action)
+      } // end of event Subject::StateChanged
+    }
+     
+    
+    .method public hidebysig static void  Main() cil managed
+      {
+        // 
+        .maxstack  2
+        .locals init (class ObserverOne V_0,
+                 class ObserverTwo V_1,
+                 class [mscorlib]System.Action V_2,
+                 class [mscorlib]System.Action V_3,
+                 class Subject V_4)
+        IL_0000:  nop
+        IL_0001:  newobj     instance void ObserverOne::.ctor()
+        IL_0006:  stloc.0
+        IL_0007:  newobj     instance void ObserverTwo::.ctor()
+        IL_000c:  stloc.1
+        IL_000d:  ldloc.0
+        IL_000e:  ldftn      instance void ObserverOne::Update()
+        IL_0014:  newobj     instance void [mscorlib]System.Action::.ctor(object,
+                                                                          native int)
+        IL_0019:  stloc.2
+        IL_001a:  ldloc.1
+        IL_001b:  ldftn      instance void ObserverTwo::Notify()
+        IL_0021:  newobj     instance void [mscorlib]System.Action::.ctor(object,
+                                                                          native int)
+        IL_0026:  stloc.3
+        IL_0027:  newobj     instance void Subject::.ctor()
+        IL_002c:  stloc.s    V_4
+        IL_002e:  ldloc.s    V_4
+        IL_0030:  ldloc.2
+        IL_0031:  callvirt   instance void Subject::add_StateChanged(class [mscorlib]System.Action)
+        IL_0036:  nop
+        IL_0037:  ldloc.s    V_4
+        IL_0039:  ldloc.3
+        IL_003a:  callvirt   instance void Subject::add_StateChanged(class [mscorlib]System.Action)
+        IL_003f:  nop
+        IL_0040:  ret
+      } // end of method Program::Main
+    
+        
+    ```
+
+    
+
+  - encapsulate Delegate Instance
+
+    - "private"
+    - Generates Event Mutators(functions) ... add_EventName ....remove_EventName in MSIL
+    - Generate Public Event Property
+
 - Generic Delegates
 
 - Two Built-in delegates 
