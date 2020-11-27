@@ -2828,11 +2828,28 @@ class Program {
 #### CheckPoint
 
 - Multicast Delegate Instances
+
+  - One to Many....
+
+  - Composite Pattern
+
+    
+
 - "event" keyword
+
 - Generic Delegates
+
 - Two Built-in delegates 
   - Func
+  
+    - Built -in delegate represents   function with return value and up to 16 parameters
+  
+      
+  
   - Action
+  
+    - Built in delegates represents void function up to 16 parameters
+  
 - Lamda 
 
 
