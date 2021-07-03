@@ -1035,13 +1035,16 @@ double[] currencyList=new double[10];
 ### Checkpoint
 
 ```C#
-public class Patient{}
+public class Patient{
+ public string GetName(){}
+}
 
 void Main(){
 
 Patient[] patientListRef=new Patient[10];
-Patient obj=new Patient();
-patientListRef[0]=obj;
+//Patient obj=new Patient();
+//patientListRef[0]=obj;
+patientListRef[0]=new Patient();
     
 }
 
